@@ -1,0 +1,91 @@
+  local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "make roblox games to become rich and famous", HidePremium = false, IntroText ="FATALITY", SaveConfig = true, ConfigFolder = "OrionTest"})
+local vu = game:GetService("VirtualUser")
+
+--value
+_G.AutoMakeGames = true
+_G.Wifi = true
+_G.GameQuality = true
+_G.FriendBoost = true
+
+--functions
+function AutoMakeGames()
+    while _G.AutoMakeGames == true do
+        game:GetService("ReplicatedStorage").Events.Game:FireServer({"Release"})
+        wait()
+     end
+ end
+ function Wifi()
+    while  _G.Wifi == true do
+game:GetService("ReplicatedStorage").Events.Upgrade:FireServer({"Buy","Wifi"})
+wait()
+    end
+end
+function GameQuality()
+    while _G.GameQuality == true do
+game:GetService("ReplicatedStorage").Events.Upgrade:FireServer({"Buy","Quality"})
+wait()
+    end
+end
+function FriendBoost()
+while _G.FriendBoost == true do
+game:GetService("ReplicatedStorage").Events.Upgrade:FireServer({"Buy","Knowledge"})
+wait()
+  end
+
+end
+
+
+
+
+
+ --TAB
+local FarmTab = Window:MakeTab({
+	Name = "AutoFarm",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+local AutoTab = Window:MakeTab({
+	Name = "Auto Upgrades",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+
+--TOggles
+FarmTab:AddToggle({
+	Name = "AutoMakeGames",
+	Default = false ,
+	Callback = function(Value)
+    _G.AutoMakeGames = Value
+    AutoMakeGames(Value)
+    end
+})
+AutoTab:AddToggle({
+	Name = "Wifi",
+	Default = false ,
+	Callback = function(Value)
+    _G.Wifi = Value
+   Wifi (Value)
+    end
+})
+
+    AutoTab:AddToggle({
+        Name = "GameQuality",
+        Default = false ,
+        Callback = function(Value)
+        _G.GameQuality = Value
+       GameQuality (Value)
+        end
+})
+AutoTab:AddToggle({
+    Name = "FriendBoost",
+    Default = false ,
+    Callback = function(Value)
+    _G.FriendBoost= Value
+   FriendBoost (Value)
+    end
+})
+
+
+ OrionLib:Init()
